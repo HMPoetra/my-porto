@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warna Dasar & Gaming */
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-blood-red: #8B0000;
+  --color-crimson: #DC143C;
+  --color-dark-purple: #1a0b2e;
+  --color-deep-black: #050505;
+  --color-neon-purple: #6a0dad;
+
+  /* Font Mono Khusus Code */
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Keyframes Animasi */
+  @keyframes mesh {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes gradient-text {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+:root {
+  /* White Mode Variables */
+  --background: 270 50% 98%;
+  --foreground: 270 50% 10%;
+  --border: 270 30% 90%;
+}
+
+.dark {
+  /* Dark Mode Variables */
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+}
+
+@layer base {
+  body {
+    @apply antialiased min-h-screen transition-opacity duration-500 bg-fixed relative;
+    /* Default Gaming Mesh Background */
+    background: linear-gradient(-45deg, #050505, #1a0b2e, #050505, #2e0b0b) !important;
+    background-size: 400% 400% !important;
+    animation: mesh 20s ease infinite !important;
+    color: white;
+  }
+
+  /* Efek Grid Cyberpunk Modern */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+      linear-gradient(rgba(220, 20, 60, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(106, 13, 173, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Noise Texture Overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Memastikan tidak ada scrollbar saat loading muncul (Custom Property dari LoadingScreen) */
+  body:has([data-loading="true"]) {
+    overflow: hidden !important;
+  }
+}
+
+/* --- Utilities --- */
+
+.text-gradient {
+  @apply bg-gradient-to-r from-blood-red via-crimson to-neon-purple bg-clip-text text-transparent bg-[length:200%_auto];
+  animation: gradient-text 5s ease infinite;
+}
+
+.glass-container {
+  @apply backdrop-blur-3xl border transition-all duration-500 rounded-[2rem];
+  /* White Mode */
+  @apply bg-white/40 border-purple-200 shadow-xl shadow-purple-900/5;
+  /* Dark Mode - FIXED: Tanpa spasi di rgba untuk menghindari build error */
+  @apply dark:bg-black/40 dark:border-white/5 dark:shadow-[0_0_40px_rgba(0,0,0,0.5)];
+}
+
+/* Custom Scrollbar Gaming */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-crimson/20 rounded-full hover:bg-crimson/50 transition-colors;
+}
