@@ -321,7 +321,7 @@ const Hero = () => {
                     src="/qris.png" 
                     alt="QRIS Donasi" 
                     className="w-full h-auto rounded-lg transition-transform duration-500 group-hover:scale-105"
-                    onError={(e: any) => { e.target.src = "https://via.placeholder.com/400?text=QRIS+PHOTO" }}
+                    onError={(e: any) => { e.target.src = "/qr.png" }}
                   />
                   <div className="absolute inset-0 border-2 border-black/5 rounded-2xl pointer-events-none" />
                 </div>

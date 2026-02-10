@@ -38,10 +38,10 @@ const Projects = () => {
     },
     {
       title: 'Project Mendatang',
-      description: 'Project rahasia yang sedang dikembangkan menggunakan teknologi modern.',
-      tags: ['Next.js', 'TypeScript', 'supabase', 'tailwind', 'framer-motion', 'prisma'],
+      description: 'Website Pengangkutan sampah tingkat rt/rw dengan fitur pelacakan waktu nyata dan chat interaktif antara driver dan warga.',
+      tags: ['Next.js', 'TypeScript', 'supabase', 'tailwind'],
       image: '',
-      github: 'https://github.com/HMPoetra/Toko_Sepatu',
+      github: '',
     },
   ];
 
